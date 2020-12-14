@@ -1,21 +1,35 @@
 package oop.lab02.constructors;
 
+import javax.security.auth.callback.LanguageCallback;
+import javax.swing.plaf.basic.BasicBorders.MarginBorder;
+
 public class UseConstructors {
 
     public static void main(final String[] args) {
         /*
-         * 1) Creare lo studente Mario Rossi, matricola 1014, anno
-         * immatricolazione 2013
-         * 
-         * 2) Creare lo studente Luca Bianchi, matricola 1018, anno
-         * immatricolazione 2010
-         * 
-         * 3) Creare lo studente Peppino Vitiello, matricola 1019, anno
-         * immatricolazione 2012
-         * 
-         * 4) Creare lo studente Luca Verdi, matricola 1020, anno
-         * immatricolazione 2013
-         * 
+        * 1) Creare lo studente Mario Rossi, matricola 1014, anno
+        * immatricolazione 2013
+        * 
+        * 2) Creare lo studente Luca Bianchi, matricola 1018, anno
+        * immatricolazione 2010
+        * 
+        * 3) Creare lo studente Peppino Vitiello, matricola 1019, anno
+        * immatricolazione 2012
+        * 
+        * 4) Creare lo studente Luca Verdi, matricola 1020, anno
+        * immatricolazione 2013
+        */
+        final Student marioRossi = new Student("Mario", "Rossi", 1014, 2013);
+        final Student lucaBianchi = new Student("Luca", "Bianchi", 1018, 2010);
+        final Student peppinoVitiello = new Student("Peppino", "Vitiello", 1019, 2012);
+        final Student lucaVerdi = new Student("Luca", "Verdi", 1020, 2013);
+
+        marioRossi.printStudentInfo();
+        lucaBianchi.printStudentInfo();
+        peppinoVitiello.printStudentInfo();
+        lucaVerdi.printStudentInfo();
+
+        /*
          * 5) Creare un treno con 300 posti di cui 100 in prima classe 200 in
          * seconda classe
          * 
@@ -25,14 +39,19 @@ public class UseConstructors {
          * 7) Creare un treno con 500 posti, tutti di seconda classe
          * 
          * 8) Creare un treno con numero di posti di default
-         * 
-         * 9) Per verificare la correttezza dei costruttori implementati
-         * stampare a video le informazioni relative agli studenti (metodo
-         * printStudentInfo) e ai treni (a tal fine implementare un metodo
-         * printTrainInfo nella classe Train). Verificare che il numero di posti
-         * di default sia consistente (ossia che ci sia un numero positivo di
-         * posti totali, e che la somma dei posti in prima e seconda classe dia
-         * il totale dei posti sul treno).
          */
+        final Train train300 = new Train(300, 100, 200);
+        final Train train1100 = new Train(1100, 50, 1050);
+        final Train train500 = new Train(500, 0, 500);
+        final Train trainDefault = new Train();
+
+        train300.printTrainInfo();
+        train1100.printTrainInfo();
+        train500.printTrainInfo();
+        trainDefault.printTrainInfo();
+
+        System.out.println(trainDefault.getTotalSeats() > 0 ? "OK" : "BUG.");
+        System.out.println(trainDefault.getTotalSeats() == trainDefault.getFirstClassSeats()
+            + trainDefault.getSecondClassSeats() ? "OK" : "BUG");
     }
 }
